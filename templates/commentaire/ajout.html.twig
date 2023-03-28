@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ajouter comment{% endblock %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/contact_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/contact_responsive.css') }}">
+
+{% endblock %}
+
+{% block body %}
+    <div class="container contact_container">
+
+
+        <!-- Map Container -->
+
+
+
+        <!-- Contact Us -->
+
+        <div class="row">
+
+
+            <div class="col">
+                <div class="get_in_touch_contents">
+                    <h1>Vous pouvez commenter ici</h1>
+                    {{ form_start(form,{'attr': {'class': 'review_form ajoutreq'}}) }}
+                    <div>
+                        {{ form_widget(form.content, {'attr': {'class': 'input_review name','placeholder':'content'}}) }}
+                    </div>
+                    <div>
+                        <button id="review_submit" type="submit" class="red_button message_submit_btn trans_300" value="Submit">Publier</button>
+                    </div>
+                    {{ form_end(form) }}
+
+                </div>
+                <button class="btn" style="height: 40px !important;padding: 5px 12px !important;"><a href="{{ path('app_comments') }}"> <p style="color: #721c24"> Voir anciens commentaires </p></a> </button>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+

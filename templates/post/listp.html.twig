@@ -1,0 +1,35 @@
+{% block body %}
+
+
+
+    <h1 align="center" >Les publications</h1>
+    <table class="table dataTable-condensed">
+        <thead>
+        <tr>
+            <th><a style="color: #721c24"></a> date</th>
+            <th>username</th>
+            <th>description</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in posts %}
+            <tr>
+                <td>{{ p.date | date }}</td>
+                <td>{{ p.user.username }}</td>
+                <td>{{ p.post }}</td>
+
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+
+    </div>
+    </div>
+{% endblock %}
+

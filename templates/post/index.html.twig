@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvennue chez techgate{% endblock %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/single_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/single_responsive.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="container single_product_container">
+
+        {% for message in app.flashes('info') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+
+    </div>
+
+    <!-- Tabs -->
+
+    <div class="tabs_section_container">
+
+        <div class="container">
+            <button class="btn" style="height: 40px !important;padding: 6px 12px !important;"><a href="{{ path('post_pdf') }}"> <p style="color: #721c24"> Télécharger PDF </p></a></button>
+
+            <form method="post" action="{{ path('triii') }}">
+                <label>
+                    <select class="form-control" name="type">
+                        <option>Croissant</option>
+                        <option>Décroissant</option>
+                    </select>
+                </label>
+                <input type="submit" class="btn btn-success" value="Trier!">
+            </form>
+
+            <div class="row">
+                <div class="col">
+
+                    <!-- Tab Description -->
+
+                    <div id="tab_1" class="tab_container active">
+                        <div class="row">
+
+
+                            <div class="col-lg-5 desc_col">
+                                {% for p in posts %}
+                                    <div class="tab_text_block">
+                                        <div class="single_product_pics">
+                                            <img src="{{ asset('front/images/'~p.image) }}">
+                                        </div>
+                                        <h2 style="color: #777620">{{ p.date | date }}</h2>
+                                        <p style="color: BLACK">{{ p.user.username }}</p>
+                                        <p style="color: BLUE;border: 1px solid black;border-radius: .25rem; padding: 0 10px;">{{ p.post }}</p>
+                                        <button class="btn" style="height: 40px !important;padding: 0px 15px !important;"><a href="{{ path('deletepost',{id:p.id}) }}"> <p style="color: #721c24"> delete</p></a> </button>
+                                        <button class="btn" style="height: 40px !important;padding: 0px 15px !important;"><a href="{{ path('updatepost',{id:p.id}) }}"> <p style="color: #721c24">update</p></a></button>
+                                        <p style="alignment: bottom"> <a href="{{ path('ajoutspost',{id:p.id}) }}"> Contacter l'annonceur</a></p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- Tab Additional Info -->
+
+
+
+                    <!-- Tab Reviews -->
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+{% block javascripts  %}
+    <script src="{{ asset('front/js/single_custom.js') }}"></script>
+{% endblock %}

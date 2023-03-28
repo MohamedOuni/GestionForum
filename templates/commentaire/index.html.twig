@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvennue chez techgate{% endblock %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/single_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/single_responsive.css') }}">
+
+{% endblock %}
+
+{% block body %}
+    <div class="container single_product_container">
+
+
+
+    </div>
+
+    <!-- Tabs -->
+
+    <div class="tabs_section_container">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col">
+
+                    <!-- Tab Description -->
+
+                    <div id="tab_1" class="tab_container active">
+                        <div class="row">
+
+                            <div class="col-lg-5 desc_col">
+                                {% for c in comments %}
+                                    <div class="tab_text_block">
+                                        <p style="color:BLACK "> <h6> <a style="color: #003eff"> Utilisateur </h6> </a>{{ c.user.username }}</p>
+                                        <p style="color:BLACK"><h6> <a style="color: #003eff">Publication </h6> </a> {{ c.post.post }}</p>
+                                        <p style="color: BLUE;border: 1px solid black;border-radius: .25rem; padding: 0 10px;">{{ c.content }}</p>
+                                        <button class="btn" style="height: 40px !important;padding: 0px 15px !important;"><a href="{{ path('deletecomment',{id:c.id}) }}"> <p style="color: #721c24"> delete</p></a> </button>
+                                        <button class="btn" style="height: 40px !important;padding: 0px 15px !important;"><a href="{{ path('updatecomment',{id:c.id}) }}"> <p style="color: #721c24">update</p></a></button>
+
+                                    </div>
+                                {% endfor %}
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <!-- Tab Additional Info -->
+
+
+
+                    <!-- Tab Reviews -->
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+{% block javascripts  %}
+    <script src="{{ asset('front/js/single_custom.js') }}"></script>
+{% endblock %}
